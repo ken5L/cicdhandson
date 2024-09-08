@@ -16,7 +16,7 @@ jobs:
       - name: チェックアウトする
         uses: actions/checkout@v4
       - name: レジストリログイン
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${ACTOR} --password-stdin
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${ACTOR,,} --password-stdin
         env:
           ACTOR: ${{ github.actor }}
       - name: コンテナイメージビルド
