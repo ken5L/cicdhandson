@@ -20,6 +20,8 @@ jobs:
         env:
           ACTOR: ${{ github.actor }}
       - name: コンテナイメージビルド
-        run: docker image build -t ghcr.io/${{ github.repository }}:latest .
+        run: docker image build -t ghcr.io/${REPOSITORY,,}:latest .
+        env:
+          REPOSITORY: ${{ github.repository }}
       - name: レジストリへ登録
         run: docker image push ghcr.io/${{ github.repository }}:latest
