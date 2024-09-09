@@ -24,4 +24,6 @@ jobs:
         env:
           REPOSITORY: ${{ github.repository }}
       - name: レジストリへ登録
-        run: docker image push ghcr.io/${{ github.repository }}:latest
+        run: docker image push ghcr.io/${REPOSITORY,,}:latest
+        env:
+          REPOSITORY: ${{ github.repository }}
